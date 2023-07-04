@@ -1,5 +1,5 @@
 import { View, Text,SafeAreaView,Image,TextInput,ScrollView } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect,useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
     UserIcon,
@@ -11,8 +11,13 @@ import search from '../assets/search.png'
 import adjust from '../assets/control.png'
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
+import sanityClient from '../sanity'
+import 'react-native-url-polyfill/auto';
+import category from '../plum-hamster/schemas/category';
 
 export default function Home() {
+
+    const [featuredCategories,setFeaturedCategories]=useState([])
 
     const navigation=useNavigation()
 
@@ -23,7 +28,23 @@ export default function Home() {
         })
     },[])
 
+    useEffect(()=>{
+        sanityClient.fetch(`*[_type=="featured"]{
+            ...,
+            restaurants[]->{
+              ...,
+              dishes[]->,
+                type->{
+                name
+                
+              }
+            }
+          }`).then(data=>setFeaturedCategories(data))
+
+    },[])
+// {console.log(featuredCategories)}
     return (
+        
         <SafeAreaView className='bg-white pt-5'>
             {/* creating header */}
             <View className="flex-row mt-6 p-2 items-center mx-3 space-x-2">
@@ -59,24 +80,21 @@ export default function Home() {
             {/* categories */}
             <Categories/>
             {/* featured rows */}
-            <FeaturedRow
-            id={1}
-            title="Featured"
-            description="This is the description of featured row"
+
+            {
+                featuredCategories?.map((category)=>{
+                    return(
+                        <FeaturedRow
+                        key={category._id}
+                        id={category._id}
+                        title={category.name}
+                        description={category.short_description}
+                        restaurants={category.restaurants}
+                        />
+                    )
+                })
+            }
             
-            />
-            <FeaturedRow
-            id={2}
-            title="Discounts"
-            description="This is the description of Tasty row"
-            
-            />
-            <FeaturedRow
-            id={3}
-            title="Offers near you"
-            description="This is the description of discounts row"
-            
-            />
             <Text>Hello</Text>
            </ScrollView>
         </SafeAreaView>

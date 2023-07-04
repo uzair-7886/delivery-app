@@ -1,5 +1,6 @@
 import {createClient} from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
+import sanityClient from './sanity'
 
 
 const client=createClient({
@@ -13,3 +14,4 @@ const builder=imageUrlBuilder(client)
 
 export const urlFor=(source)=>builder.image(source)
 
+export default client

@@ -3,6 +3,7 @@ import React from 'react'
 import { StarIcon } from 'react-native-heroicons/solid'
 // import {LocationMarkerIcon} from 'react-native-heroicons/outline'
 import location from '../assets/location.png'
+import { urlFor } from '../sanity'
 
 export default function RestaurantCard({
     id,
@@ -17,10 +18,10 @@ export default function RestaurantCard({
     lat
 }) {
   return (
-    <TouchableOpacity className='bg-white '>
+    <TouchableOpacity className='bg-slate-100 ml-1 mr-3 shadow-xl'>
 <Image
 source={{
-    uri:imgUrl
+    uri: urlFor(imgUrl).url()
 }}
 className='h-36 w-64 rounded-sm bg-slate-500'
 />

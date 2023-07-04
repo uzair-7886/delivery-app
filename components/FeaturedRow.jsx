@@ -1,10 +1,13 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import {React,useState} from 'react'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import { ScrollView } from 'react-native'
 import RestaurantCard from './RestaurantCard'
+import { urlFor } from '../sanity'
 
-export default function FeaturedRow({title,description,featuredCategory}) {
+export default function FeaturedRow({title,description,featuredCategory,restaurants}) {
+  
+
   return (
     <View>
       {/* <Text>FeaturedRow</Text> */}
@@ -21,7 +24,7 @@ export default function FeaturedRow({title,description,featuredCategory}) {
     }}
     className='pt-4'
     >
-        <RestaurantCard
+        {/* <RestaurantCard
         id='123'
         imgUrl='https://links.papareact.com/wru'
         title='KFC'
@@ -32,7 +35,26 @@ export default function FeaturedRow({title,description,featuredCategory}) {
         dishes={[]}
         long={20}
         lat={5}
-        />
+        /> */}
+        {
+          restaurants.map((restaurant)=>{
+            return(
+              <RestaurantCard
+              key={restaurant._id}
+              id={restaurant._id}
+              imgUrl={restaurant.image}
+              title={restaurant.name}
+              rating={restaurant.rating}
+              genre={restaurant.type.name}
+              address={restaurant.address}
+              short_description={restaurant.short_description}
+              dishes={restaurant.dishes}
+              long={restaurant.long}
+              lat={restaurant.lat}
+              />
+            )
+          })
+        }
 
     </ScrollView>
     </View>
