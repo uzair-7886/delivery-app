@@ -10,6 +10,7 @@ import {
 import search from '../assets/search.png'
 import adjust from '../assets/control.png'
 import Categories from '../components/Categories';
+import FeaturedRow from '../components/FeaturedRow';
 
 export default function Home() {
 
@@ -54,10 +55,29 @@ export default function Home() {
             <Image source={adjust} className='w-7 h-7 '/>
            </View>
 
-           <ScrollView>
+           <ScrollView className='mb-40'>
             {/* categories */}
             <Categories/>
             {/* featured rows */}
+            <FeaturedRow
+            id={1}
+            title="Featured"
+            description="This is the description of featured row"
+            
+            />
+            <FeaturedRow
+            id={2}
+            title="Discounts"
+            description="This is the description of Tasty row"
+            
+            />
+            <FeaturedRow
+            id={3}
+            title="Offers near you"
+            description="This is the description of discounts row"
+            
+            />
+            <Text>Hello</Text>
            </ScrollView>
         </SafeAreaView>
     );
