@@ -7,6 +7,7 @@ import location from '../assets/location.png'
 import { ChevronRightIcon,StarIcon, } from 'react-native-heroicons/solid';
 import {QuestionMarkCircleIcon} from 'react-native-heroicons/outline'
 import Dish from '../components/Dish';
+import Basket from '../components/Basket';
 
 export default function Restaurant() {
 
@@ -34,6 +35,8 @@ navigation.setOptions({
 },[])
 
   return (
+    <>
+    <Basket/>
     <ScrollView className=''>
       {/* <Text>{title}</Text> */}
 <View className='relative'>
@@ -76,7 +79,7 @@ size={22}
             <ChevronRightIcon color='#00CCBB' />
         </TouchableOpacity>
     </View>
-    <View>
+    <View className='pb-30'>
         <Text className='px-4 pt-6 mb-3 font-bold text-2xl'>Menu</Text>
     </View>
     {
@@ -94,5 +97,6 @@ size={22}
         })
     }
     </ScrollView>
+    </>
   )
 }

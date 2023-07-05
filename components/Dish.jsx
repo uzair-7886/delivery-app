@@ -4,6 +4,7 @@ import { urlFor } from '../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
 import { addToBasket, selectBasketItemsWithId,removeFromBasket } from '../features/basketSlice'
 import { useSelector,useDispatch } from 'react-redux'
+// import Basket from './Basket'
 
 const Dish = ({
     id, name, description, price, image
@@ -36,7 +37,7 @@ const Dish = ({
                     <View className='flex-1 pr-2'>
                         <Text className='text-lg mb-1'>{name}</Text>
                         <Text className='text-gray-400 mb-1'>{description}</Text>
-                        <Text className='text-gray-400 mb-1'>PKR {price}</Text>
+                        <Text className='text-gray-600 mb-1 font-bold mt-2 ml-1'>PKR {price}</Text>
                     </View>
                     <View>
                         <Image
@@ -59,10 +60,12 @@ const Dish = ({
                         {/* <Text>Pressed</Text> */}
                         <View className='flex-row items-center space-x-2 pb-3'>
                             <TouchableOpacity
+                            // disabled={!items.length}
                             onPress={removeItemsFromBasket}
                             >
                                 <MinusCircleIcon
-                                    color='#00CCBB'
+                                
+                                    color={items.length>0?'#00CCBB':'gray'}
                                     size={40}
                                 />   
                             </TouchableOpacity>
@@ -80,6 +83,7 @@ const Dish = ({
                     </View>
                 }
             </TouchableOpacity>
+            {/* <Basket/> */}
         </>
     )
 }
