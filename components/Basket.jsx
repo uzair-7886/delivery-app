@@ -9,6 +9,8 @@ const Basket = () => {
     const items=useSelector(selectBasketItems);
     const navigation=useNavigation();
     const total=useSelector(selectTotalPrice)
+
+    if(items.length===0)return null
   return (
     <View className='absolute bottom-10  z-50 w-full'>
       {/* <Text>{total}</Text> */}

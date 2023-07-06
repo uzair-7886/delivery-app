@@ -1,5 +1,5 @@
 import { ScrollView, Text,Image,View,TouchableOpacity } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { urlFor } from '../sanity';
 import { ArrowLeftIcon } from 'react-native-heroicons/outline';
@@ -8,6 +8,8 @@ import { ChevronRightIcon,StarIcon, } from 'react-native-heroicons/solid';
 import {QuestionMarkCircleIcon} from 'react-native-heroicons/outline'
 import Dish from '../components/Dish';
 import Basket from '../components/Basket';
+import { useDispatch } from 'react-redux';
+import { setRestaurant } from '../features/restaurantSlice';
 
 export default function Restaurant() {
 
@@ -28,11 +30,31 @@ const {
 
 const navigation=useNavigation()
 
+const dispatch=useDispatch()
+
+
+useEffect(()=>{
+dispatch(setRestaurant({
+    id:id,
+    imgUrl:imgUrl,
+    title:title,
+    rating:rating,
+    genre:genre,
+    address:address,
+    short_description:short_description,
+    dishes:dishes,
+    long:long,
+    lat:lat
+}))
+},[dispatch])
+
 useLayoutEffect(()=>{
 navigation.setOptions({
     headerShown:false
 })
 },[])
+
+
 
   return (
     <>
@@ -79,12 +101,11 @@ size={22}
             <ChevronRightIcon color='#00CCBB' />
         </TouchableOpacity>
     </View>
-    <View className='pb-30'>
+    <View className='pb-36'>
         <Text className='px-4 pt-6 mb-3 font-bold text-2xl'>Menu</Text>
-    </View>
     {
-        dishes.map((dish,index)=>{
-            return(
+      dishes.map((dish,index)=>{
+        return(
                 <Dish
                 key={dish._id}
                 id={dish._id}
@@ -93,9 +114,10 @@ size={22}
                 price={dish.price}
                 image={dish.image}
                 />
-            )
-        })
-    }
+                )
+              })
+            }
+            </View>
     </ScrollView>
     </>
   )

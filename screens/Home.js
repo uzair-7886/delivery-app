@@ -23,7 +23,6 @@ export default function Home() {
 
     useLayoutEffect(()=>{
         navigation.setOptions({
-            // headerTitle: "HomeScreenIsShitt",
             headerShown:false,
         })
     },[])
@@ -45,7 +44,7 @@ export default function Home() {
 // {console.log(featuredCategories)}
     return (
         
-        <SafeAreaView className='bg-white pt-5'>
+        <SafeAreaView className='bg-white pt-1'>
             {/* creating header */}
             <View className="flex-row mt-6 p-2 items-center mx-3 space-x-2">
                 <Image
