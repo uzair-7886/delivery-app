@@ -1,4 +1,4 @@
-import { View, Text,SafeAreaView,Image,TextInput,ScrollView } from 'react-native';
+import { View, Text,SafeAreaView,Image,TextInput,ScrollView,StatusBar} from 'react-native';
 import React, { useLayoutEffect,useState,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -46,7 +46,8 @@ export default function Home() {
         
         <SafeAreaView className='bg-white pt-1'>
             {/* creating header */}
-            <View className="flex-row mt-6 p-2 items-center mx-3 space-x-2">
+            <StatusBar backgroundColor='white' barStyle={'dark-content'} translucent={false} /> 
+            <View className="flex-row p-2 items-center mx-3 space-x-2">
                 <Image
                 source={{
                     uri:"https://links.papareact.com/wru"
@@ -61,7 +62,7 @@ export default function Home() {
                 </Text>
                 </View>
 
-                <UserIcon size={30} color='#00CCBB'  />
+                <UserIcon size={30} color='#D70F64'  />
             </View>
            <View className='flex-row items-center justify-between mx-5 pb-2 ' >
             <View className=' flex-row items-center space-x-2 bg-gray-200 rounded-md py-2 px-3 w-[80vw] '>
@@ -94,7 +95,6 @@ export default function Home() {
                 })
             }
             
-            <Text>Hello</Text>
            </ScrollView>
         </SafeAreaView>
     );

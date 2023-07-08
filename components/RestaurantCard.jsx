@@ -48,11 +48,11 @@ className='h-36 w-64 rounded-sm bg-slate-500'
     <Text className='font-bold text-lg pt-2'>{title}</Text>
     <View className='flex-row items-center space-x-1'>
 <StarIcon
-color='#00CCBB'
+color='#D70F64'
 opacity={0.5}
 size={22}
 />
-<Text className='text-[#00CCBB]'>{rating} </Text>
+<Text className='text-[#D70F64]'>{rating} </Text>
 <Text className='text-xs text-gray-500'>. {genre}</Text>
     </View>
 

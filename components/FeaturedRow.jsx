@@ -13,7 +13,7 @@ export default function FeaturedRow({title,description,featuredCategory,restaura
       {/* <Text>FeaturedRow</Text> */}
       <View className='mt-4 flex-row items-center justify-between px-5'>
         <Text className='font-bold text-lg'>{title}</Text>
-        <ArrowRightIcon color="#00CCBB"/> 
+        <ArrowRightIcon color="#D70F64"/> 
       </View>
       <Text className='px-5 text-xs text-gray-500'>{description}</Text>
     <ScrollView

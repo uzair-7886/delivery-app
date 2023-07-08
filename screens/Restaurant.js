@@ -73,7 +73,7 @@ navigation.setOptions({
         navigation.goBack()
       }}
       >
-        <ArrowLeftIcon size={22} color="#00CCBB"/>
+        <ArrowLeftIcon size={22} color="#D70F64"/>
       </TouchableOpacity>
     </View>
     <View className='bg-white'>
@@ -81,11 +81,11 @@ navigation.setOptions({
         <Text className='text-3xl font-bold'>{title}</Text>
         <View className='flex-row space-x-1 my-1 items-center'>
         <StarIcon
-color='#00CCBB'
+color='#D70F64'
 opacity={0.5}
 size={22}
 />
-<Text className='text-[#00CCBB]'>{rating}</Text>
+<Text className='text-[#D70F64]'>{rating}</Text>
 <Text className='text-xs text-gray-500'>. {genre}</Text>
 <Image
         source={location}
@@ -98,7 +98,7 @@ size={22}
         <TouchableOpacity className='flex-row space-x-2 p-4 border-y border-gray-300 items-center'>
             <QuestionMarkCircleIcon color='gray' size={20} opacity={0.6}/>
             <Text className='pl-2 text-md flex-1 font-bold'>Have a food allergy?</Text>
-            <ChevronRightIcon color='#00CCBB' />
+            <ChevronRightIcon color='#D70F64' />
         </TouchableOpacity>
     </View>
     <View className='pb-36'>
